@@ -5,11 +5,15 @@ $(() => {
   });
 
   $('#two-button').on('mouseover' , (arguments) => {
-    let randomnum1 = Math.random()*100;
-    let randomnum2 = Math.random()*100;
-    $('#two-button').css('left', randomnum1 + '%');
-    $('#two-button').css('top', randomnum2 + '%');
-    $('#two-button').css('position', 'absolute');
+    const randomnum1 = Math.random()*100;
+    const randomnum2 = Math.random()*100;
+    const config = {
+      left: randomnum1 + '%',
+      top: randomnum2 + '%',
+      position: 'absolute'
+    }
+
+    $('#two-button').css(config);
   });
 
 });
