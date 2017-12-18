@@ -1,16 +1,17 @@
-var skillpoint = 50;
-var str = 0;
-var def = 0;
-var int = 0;
-var lux = 0;
+let skillpoint = 50;
+let str = 0;
+let def = 0;
+let int = 0;
+let lux = 0;
 
 $(() => {
 
   /* STR */
   $('#dec-str').on('click', (arguments) => {
     if( str > 0 && skillpoint < 50) {
-      str--; skillpoint++;
-      document.getElementById("str-percent").style = "width: " + str*2 + "%";
+      str--;
+      skillpoint++;
+      $('#str-percent').css('width', str*2 + '%')
       $('#skill-point').html( skillpoint );
       $('#str-value').html( str );
     }
@@ -19,8 +20,9 @@ $(() => {
 
   $('#inc-str').on('click', (arguments) => {
     if( str < 50 && skillpoint > 0) {
-      str++; skillpoint--;
-      document.getElementById("str-percent").style = "width: " + str*2 + "%";
+      str++;
+      skillpoint--;
+      $('#str-percent').css('width', str*2 + '%')
       $('#skill-point').html( skillpoint );
       $('#str-value').html( str );
     }
@@ -30,8 +32,9 @@ $(() => {
   /* DEF */
   $('#dec-def').on('click', (arguments) => {
     if( def > 0 && skillpoint < 50) {
-      def--; skillpoint++;
-      document.getElementById("def-percent").style = "width: " + def*2 + "%";
+      def--;
+      skillpoint++;
+      $('#def-percent').css('width', def*2 + '%')
       $('#skill-point').html( skillpoint );
       $('#def-value').html( def );
     }
@@ -40,8 +43,9 @@ $(() => {
 
   $('#inc-def').on('click', (arguments) => {
     if( def < 50 && skillpoint > 0) {
-    def++; skillpoint--;
-      document.getElementById("def-percent").style = "width: " + def*2 + "%";
+      def++;
+      skillpoint--;
+      $('#def-percent').css('width', def*2 + '%');
       $('#skill-point').html( skillpoint );
       $('#def-value').html( def );
     }
@@ -51,8 +55,9 @@ $(() => {
   /* INT */
   $('#dec-int').on('click', (arguments) => {
     if( int > 0 && skillpoint < 50) {
-      int--; skillpoint++;
-      document.getElementById("int-percent").style = "width: " + int*2 + "%";
+      int--;
+      skillpoint++;
+      $('#int-percent').css('width', int*2 + '%');
       $('#skill-point').html( skillpoint );
       $('#int-value').html( int );
     }
@@ -61,8 +66,9 @@ $(() => {
 
   $('#inc-int').on('click', (arguments) => {
     if( int < 50 && skillpoint > 0) {
-      int++; skillpoint--;
-      document.getElementById("int-percent").style = "width: " + int*2 + "%";
+      int++;
+      skillpoint--;
+      $('#int-percent').css('width', int*2 + '%');
       $('#skill-point').html( skillpoint );
       $('#int-value').html( int );
     }
@@ -72,8 +78,9 @@ $(() => {
   /* LUX */
   $('#dec-lux').on('click', (arguments) => {
     if( lux > 0 && skillpoint < 50) {
-      lux--; skillpoint++;
-      document.getElementById("lux-percent").style = "width: " + lux*2 + "%";
+      lux--;
+      skillpoint++;
+      $('#lux-percent').css('width', lux*2 + '%');
       $('#skill-point').html( skillpoint );
       $('#lux-value').html( lux );
     }
@@ -82,8 +89,9 @@ $(() => {
 
   $('#inc-lux').on('click', (arguments) => {
     if( lux < 50 && skillpoint > 0) {
-      lux++; skillpoint--;
-      document.getElementById("lux-percent").style = "width: " + lux*2 + "%";
+      lux++;
+      skillpoint--;
+      $('#lux-percent').css('width', lux*2 + '%');
       $('#skill-point').html( skillpoint );
       $('#lux-value').html( lux );
     }
@@ -95,19 +103,19 @@ $(() => {
     // STR
     skillpoint = 50;
     str = Math.floor( Math.random()*skillpoint );
-    document.getElementById("str-percent").style = "width: " + str*2 + "%";
+    $('#str-percent').css('width', str*2 + '%');
     // DEF
     skillpoint = skillpoint - str;
     def = Math.floor( Math.random()*skillpoint );
-    document.getElementById("def-percent").style = "width: " + def*2 + "%";
+    $('#def-percent').css('width', def*2 + '%');
     // INT
     skillpoint = skillpoint - def;
     int = Math.floor( Math.random()*skillpoint );
-    document.getElementById("int-percent").style = "width: " + int*2 + "%";
+    $('#int-percent').css('width', int*2 + '%');
     // LUX
     skillpoint = skillpoint - int;
     lux = skillpoint;
-    document.getElementById("lux-percent").style = "width: " + lux*2 + "%";
+    $('#lux-percent').css('width', lux*2 + '%');
     // Skill Point
     skillpoint = skillpoint - lux;
     $('#skill-point').html( skillpoint );
