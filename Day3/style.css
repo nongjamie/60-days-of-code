@@ -1,0 +1,57 @@
+* {
+  /* border-style: solid;
+  border-width: 2px; */
+}
+
+#menu-bar {
+  text-align: center;
+  background-color: rgb(87,75,79);
+}
+
+nav {
+  margin: auto;
+}
+
+.nav-link {
+  color: white;
+}
+
+.row {
+  text-align: center;
+}
+
+#atom-text {
+  align: center;
+}
+
+#atom-round-pic {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  display: block;
+  margin-left: 0px;
+  margin-top: 50px;
+}
+
+#atom-example-pic {
+    display: block;
+    margin: auto;
+}
+
+#detail-of-atom {
+  font-size: 200%;
+}
+
+#features-no-1 {
+  background-color: rgb(250,246,237);
+}
+
+#topics-feature-1 {
+  font-size: 200%;
+}
+
+#item-1-1 {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
