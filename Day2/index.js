@@ -125,4 +125,16 @@ $(() => {
     $('#lux-value').html( lux );
   });
 
+  $('#send-butt').on( 'click' , (arguments) => {
+    const data = {
+            str: str,
+            def: def,
+            int: int,
+            lux: lux
+    }
+    const query = $.param(data);
+    console.log( 'sendbutton is clicked' );
+    window.location = '../Day4/index.html?' + query;
+  } );
+
 });
