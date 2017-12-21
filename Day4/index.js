@@ -1,6 +1,5 @@
 $( () => {
   const query = decodeURIComponent(window.location.search.substring(1));
-
   if( query.length == 0 ) {
     window.location = '../Day2/index.html';
   }
@@ -11,6 +10,8 @@ $( () => {
             const keyvalue = item.split('=');
             obj[keyvalue[0]] = keyvalue[1]
     });
+    // Picture
+    $('#picture').attr('src', obj.pic);
     // STR
     $('#str-percent').html( obj.str );
     $('#str-percent').css('width' , obj.str*2 + '%');
