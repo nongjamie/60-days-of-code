@@ -31,6 +31,9 @@ $( () => {
       displayHSV(myArray2);
       $('#color-field').css( 'background-color' , `rgb(${r},${g},${b})` );
     }
+    else {
+      alert('The r value must be [0, 255] value.');
+    }
   } );
 
   $('#g-value').on( 'input' , () => {
@@ -43,6 +46,9 @@ $( () => {
       displayHSV(myArray2);
       $('#color-field').css( 'background-color' , `rgb(${r},${g},${b})` );
     }
+    else {
+      alert('The g value must be [0, 255] value.');
+    }
   } );
 
   $('#b-value').on( 'input' , () => {
@@ -54,6 +60,9 @@ $( () => {
       displayHSL(myArray);
       displayHSV(myArray2);
       $('#color-field').css( 'background-color' , `rgb(${r},${g},${b})` );
+    }
+    else {
+      alert('The b value must be [0, 255] value.');
     }
   } );
 
@@ -71,6 +80,9 @@ $( () => {
       displayHSV(myArray2);
       $('#color-field').css( 'background-color' , `rgb(${r},${g},${b})` );
     }
+    else {
+      alert('The h value of hsl must be [0, 1] value.');
+    }
   } );
 
   $('#hsl-s-value').on( 'input' , () => {
@@ -86,6 +98,9 @@ $( () => {
       let myArray2 = rgbToHsv(r, g, b);
       displayHSV(myArray2);
       $('#color-field').css( 'background-color' , `rgb(${r},${g},${b})` );
+    }
+    else {
+      alert('The s value of hsl must be [0, 1] value.');
     }
   } );
 
@@ -103,6 +118,9 @@ $( () => {
       displayHSV(myArray2);
       $('#color-field').css( 'background-color' , `rgb(${r},${g},${b})` );
     }
+    else {
+      alert('The l value of hsl must be [0, 1] value.');
+    }
   } );
 
   $('#hsv-h-value').on( 'input' , () => {
@@ -118,6 +136,9 @@ $( () => {
       let myArray2 = rgbToHsl(r, g, b);
       displayHSL(myArray2);
       $('#color-field').css( 'background-color' , `rgb(${r},${g},${b})` );
+    }
+    else {
+      alert('The h value of hsv must be [0, 1] value.');
     }
   } );
 
@@ -135,6 +156,9 @@ $( () => {
       displayHSL(myArray2);
       $('#color-field').css( 'background-color' , `rgb(${r},${g},${b})` );
     }
+    else {
+      alert('The s value of hsv must be [0, 1] value.');
+    }
   } );
 
   $('#hsv-v-value').on( 'input' , () => {
@@ -150,6 +174,9 @@ $( () => {
       let myArray2 = rgbToHsl(r, g, b);
       displayHSL(myArray2);
       $('#color-field').css( 'background-color' , `rgb(${r},${g},${b})` );
+    }
+    else {
+      alert('The v value of hsv must be [0, 1] value.');
     }
   } );
 
@@ -170,3 +197,6 @@ $( () => {
   } );
 
 } );
+
+// กดปุ่มขึ้นลง เพิ่มขึ้นทีละ 0.05
+// มีการ alert
