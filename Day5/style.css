@@ -2,9 +2,9 @@
   width: 200px;
   height: 200px;
   background-color: rgb(0,0,0);
-  border-radius: 50%;
+  border-radius: 100px;
   margin: auto;
-  margin-top: 2%;
+  margin-top: 20px;
 }
 
 #clear-butt {
