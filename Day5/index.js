@@ -21,10 +21,22 @@ $( () => {
     $('#hsv-v-value').val(myArray[2]);
   };
 
-  $('#r-value').on( 'input' , () => {
-    let temp = parseFloat( $('#r-value').val() );
+  const setupRGB = (myString) => {
+    let temp = parseFloat( $(myString).val() );
+    switch( myString ) {
+      case '#r-value':
+        r = temp;
+        break;
+      case '#g-value':
+        g = temp;
+        break;
+      case '#b-value':
+        b = temp;
+        break;
+      default:
+        break;
+    }
     if( (temp >= 0) && (temp <= 255) ) {
-      r = temp;
       let myArray = rgbToHsl(r, g, b);
       let myArray2 = rgbToHsv(r, g, b);
       displayHSL(myArray);
@@ -32,152 +44,110 @@ $( () => {
       $('#color-field').css( 'background-color' , `rgb(${r},${g},${b})` );
     }
     else {
-      alert('The r value must be [0, 255] value.');
+      alert('The value must be [0, 255] value.');
     }
+  };
+
+  const setupHSL = (myString) => {
+    let checking = '';
+    let tempH = parseFloat( $('#hsl-h-value').val() );
+    let tempS = parseFloat( $('#hsl-s-value').val() );
+    let tempL = parseFloat( $('#hsl-l-value').val() );
+    switch( myString ) {
+      case '#hsl-h-value':
+        checking = tempH;
+        break;
+      case '#hsl-s-value':
+        checking = tempS;
+        break;
+      case '#hsl-l-value':
+        checking = tempL;
+        break;
+      default:
+        break;
+    }
+    if( (checking >= 0) && (checking <= 1) ) {
+      let myArray = hslToRgb(tempH, tempS, tempL);
+      r = Math.floor( myArray[0] );
+      g = Math.floor( myArray[1] );
+      b = Math.floor( myArray[2] );
+      displayRGB( myArray );
+      let myArray2 = rgbToHsv(r, g, b);
+      displayHSV(myArray2);
+      $('#color-field').css( 'background-color' , `rgb(${r},${g},${b})` );
+    }
+    else {
+      alert('The value must be [0, 1] value.');
+    }
+  };
+
+  const setupHSV = ( myString ) => {
+    let checking = '';
+    let tempH = parseFloat( $('#hsv-h-value').val() );
+    let tempS = parseFloat( $('#hsv-s-value').val() );
+    let tempV = parseFloat( $('#hsv-v-value').val() );
+    switch( myString ) {
+      case '#hsv-h-value':
+        checking = tempH;
+        break;
+      case '#hsv-s-value':
+        checking = tempS;
+        break;
+      case '#hsv-v-value':
+        checking = tempL;
+        break;
+      default:
+        break;
+    }
+    if( (checking >= 0) && (checking <= 1) ) {
+      let myArray = hsvToRgb(tempH, tempS, tempV);
+      r = Math.floor( myArray[0] );
+      g = Math.floor( myArray[1] );
+      b = Math.floor( myArray[2] );
+      displayRGB( myArray );
+      let myArray2 = rgbToHsl(r, g, b);
+      displayHSL(myArray2);
+      $('#color-field').css( 'background-color' , `rgb(${r},${g},${b})` );
+    }
+    else {
+      alert('The value must be [0, 1] value.');
+    }
+  };
+
+  $('#r-value').on( 'input' , () => {
+    setupRGB('#r-value');
   } );
 
   $('#g-value').on( 'input' , () => {
-    let temp = parseFloat( $('#g-value').val() );
-    if( (temp >= 0) && (temp <= 255) ) {
-      g = temp;
-      let myArray = rgbToHsl(r, g, b);
-      let myArray2 = rgbToHsv(r, g, b);
-      displayHSL(myArray);
-      displayHSV(myArray2);
-      $('#color-field').css( 'background-color' , `rgb(${r},${g},${b})` );
-    }
-    else {
-      alert('The g value must be [0, 255] value.');
-    }
+    setupRGB('#g-value');
   } );
 
   $('#b-value').on( 'input' , () => {
-    let temp = parseFloat( $('#b-value').val() );
-    if( (temp >= 0) && (temp <= 255) ) {
-      b = temp;
-      let myArray = rgbToHsl(r, g, b);
-      let myArray2 = rgbToHsv(r, g, b);
-      displayHSL(myArray);
-      displayHSV(myArray2);
-      $('#color-field').css( 'background-color' , `rgb(${r},${g},${b})` );
-    }
-    else {
-      alert('The b value must be [0, 255] value.');
-    }
+    setupRGB('#b-value');
   } );
 
   $('#hsl-h-value').on( 'input' , () => {
-    let tempH = parseFloat( $('#hsl-h-value').val() );
-    let tempS = parseFloat( $('#hsl-s-value').val() );
-    let tempL = parseFloat( $('#hsl-l-value').val() );
-    if( (tempH >= 0) && (tempH <= 1) ) {
-      let myArray = hslToRgb(tempH, tempS, tempL);
-      r = Math.floor( myArray[0] );
-      g = Math.floor( myArray[1] );
-      b = Math.floor( myArray[2] );
-      displayRGB( myArray );
-      let myArray2 = rgbToHsv(r, g, b);
-      displayHSV(myArray2);
-      $('#color-field').css( 'background-color' , `rgb(${r},${g},${b})` );
-    }
-    else {
-      alert('The h value of hsl must be [0, 1] value.');
-    }
+    setupHSL('#hsl-h-value');
   } );
 
   $('#hsl-s-value').on( 'input' , () => {
-    let tempH = parseFloat( $('#hsl-h-value').val() );
-    let tempS = parseFloat( $('#hsl-s-value').val() );
-    let tempL = parseFloat( $('#hsl-l-value').val() );
-    if( (tempS >= 0) && (tempS <= 1) ) {
-      let myArray = hslToRgb(tempH, tempS, tempL);
-      r = Math.floor( myArray[0] );
-      g = Math.floor( myArray[1] );
-      b = Math.floor( myArray[2] );
-      displayRGB( myArray );
-      let myArray2 = rgbToHsv(r, g, b);
-      displayHSV(myArray2);
-      $('#color-field').css( 'background-color' , `rgb(${r},${g},${b})` );
-    }
-    else {
-      alert('The s value of hsl must be [0, 1] value.');
-    }
+    setupHSL('#hsl-s-value');
   } );
 
   $('#hsl-l-value').on( 'input' , () => {
-    let tempH = parseFloat( $('#hsl-h-value').val() );
-    let tempS = parseFloat( $('#hsl-s-value').val() );
-    let tempL = parseFloat( $('#hsl-l-value').val() );
-    if( (tempL >= 0) && (tempL <= 1) ) {
-      let myArray = hslToRgb(tempH, tempS, tempL);
-      r = Math.floor( myArray[0] );
-      g = Math.floor( myArray[1] );
-      b = Math.floor( myArray[2] );
-      displayRGB( myArray );
-      let myArray2 = rgbToHsv(r, g, b);
-      displayHSV(myArray2);
-      $('#color-field').css( 'background-color' , `rgb(${r},${g},${b})` );
-    }
-    else {
-      alert('The l value of hsl must be [0, 1] value.');
-    }
+    setupHSL('#hsl-l-value');
   } );
 
   $('#hsv-h-value').on( 'input' , () => {
-    let tempH = parseFloat( $('#hsv-h-value').val() );
-    let tempS = parseFloat( $('#hsv-s-value').val() );
-    let tempV = parseFloat( $('#hsv-v-value').val() );
-    if( (tempH >= 0) && (tempH <= 1) ) {
-      let myArray = hsvToRgb(tempH, tempS, tempV);
-      r = Math.floor( myArray[0] );
-      g = Math.floor( myArray[1] );
-      b = Math.floor( myArray[2] );
-      displayRGB( myArray );
-      let myArray2 = rgbToHsl(r, g, b);
-      displayHSL(myArray2);
-      $('#color-field').css( 'background-color' , `rgb(${r},${g},${b})` );
-    }
-    else {
-      alert('The h value of hsv must be [0, 1] value.');
-    }
+    setupHSV('#hsv-h-value');
   } );
 
   $('#hsv-s-value').on( 'input' , () => {
-    let tempH = parseFloat( $('#hsv-h-value').val() );
-    let tempS = parseFloat( $('#hsv-s-value').val() );
-    let tempV = parseFloat( $('#hsv-v-value').val() );
-    if( (tempS >= 0) && (tempS <= 1) ) {
-      let myArray = hsvToRgb(tempH, tempS, tempV);
-      r = Math.floor( myArray[0] );
-      g = Math.floor( myArray[1] );
-      b = Math.floor( myArray[2] );
-      displayRGB( myArray );
-      let myArray2 = rgbToHsl(r, g, b);
-      displayHSL(myArray2);
-      $('#color-field').css( 'background-color' , `rgb(${r},${g},${b})` );
-    }
-    else {
-      alert('The s value of hsv must be [0, 1] value.');
-    }
+    setupHSV('#hsv-s-value');
   } );
 
   $('#hsv-v-value').on( 'input' , () => {
-    let tempH = parseFloat( $('#hsv-h-value').val() );
-    let tempS = parseFloat( $('#hsv-s-value').val() );
-    let tempV = parseFloat( $('#hsv-v-value').val() );
-    if( (tempV >= 0) && (tempV <= 1) ) {
-      let myArray = hsvToRgb(tempH, tempS, tempV);
-      r = Math.floor( myArray[0] );
-      g = Math.floor( myArray[1] );
-      b = Math.floor( myArray[2] );
-      displayRGB( myArray );
-      let myArray2 = rgbToHsl(r, g, b);
-      displayHSL(myArray2);
-      $('#color-field').css( 'background-color' , `rgb(${r},${g},${b})` );
-    }
-    else {
-      alert('The v value of hsv must be [0, 1] value.');
-    }
+    setupHSV('#hsv-v-value');
   } );
 
   $('#clear-butt').on( 'click' , () => {
