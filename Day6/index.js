@@ -47,12 +47,7 @@ $( () => {
   // Is player win?
   const isWin = () => {
     if( !isGameFinish ) {
-      for( let i = 0 ; i < selectWord.length ; i++ ) {
-        if( playerAnswer[i] === '_' ) {
-          return false;
-        }
-      }
-      return true;
+      return ( keyAnswer.join('') === playerAnswer.join('') );
     }
   };
 
@@ -78,38 +73,10 @@ $( () => {
       $('#player-guess-display').html(tempWord+'');
       if( isWin() ) {
         isGameFinish = true;
-        turn = 9;
+        turn = -1;
         console.log('Game is finish');
       }
-      switch( turn ) {
-        case 7:
-          $('#status-image').attr('src', '../Day6/image/Day6-image.001.jpeg');
-          break;
-        case 6:
-          $('#status-image').attr('src', '../Day6/image/Day6-image.002.jpeg');
-          break;
-        case 5:
-          $('#status-image').attr('src', '../Day6/image/Day6-image.003.jpeg');
-          break;
-        case 4:
-          $('#status-image').attr('src', '../Day6/image/Day6-image.004.jpeg');
-          break;
-        case 3:
-          $('#status-image').attr('src', '../Day6/image/Day6-image.005.jpeg');
-          break;
-        case 2:
-          $('#status-image').attr('src', '../Day6/image/Day6-image.006.jpeg');
-          break;
-        case 1:
-          $('#status-image').attr('src', '../Day6/image/Day6-image.007.jpeg');
-          break;
-        case 0:
-          $('#status-image').attr('src', '../Day6/image/Day6-image.008.jpeg');
-          break;
-        default:
-          $('#status-image').attr('src', '../Day6/image/Day6-image.009.jpeg');
-          break;
-      }
+      $('#status-image').attr('src', '../Day6/image/Day6-image.00'+(8-turn)+'.jpeg' );
     }
   };
 
@@ -117,11 +84,11 @@ $( () => {
   displayWord();
 
   // Receive the letter from the user and check it.
-  $('#input-field').on( 'input' , () => {
+  $(document).on( 'keydown' , () => {
+    let letter = String.fromCharCode( event.keyCode ).toLowerCase();
     if( !isGameFinish ) {
-      let playerInput = $('#input-field').val();
-      if( findLetter( playerInput ) ) {
-        fillLetter( playerInput );
+      if( findLetter( letter ) ) {
+        fillLetter( letter );
       }
       else {
         turn--;
