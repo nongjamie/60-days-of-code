@@ -3,31 +3,24 @@ $( () => {
   let turn = 7;
   let isGameFinish = false;
 
-  // Lsit of the words.
+  // List of the words.
   const arrayOfWord = [ 'probability' , 'distribution' , 'software' , 'binomial' , 'discrete' , 'counting' ];
 
   // Select the word randomly.
   const selectWord = arrayOfWord[ Math.floor( Math.random()*arrayOfWord.length ) ];
 
   // Array of the key answer.
-  let keyAnswer = [];
-  for( let i = 0 ; i < selectWord.length ; i++ ) {
-    keyAnswer[i] = selectWord.charAt(i);
-  }
+  let keyAnswer = selectWord.split('');
 
   // Array of the player answer.
-  let playerAnswer = [];
-  for( let i = 0 ; i < selectWord.length ; i++ ) {
-    playerAnswer[i] = '_';
-  }
+  let playerAnswer = ('_').repeat(selectWord.length).split('');
 
   // Find the letter, Is it in the key answer?
   const findLetter = (letter) => {
     if( !isGameFinish ) {
       for( let i = 0 ; i < selectWord.length ; i++ ) {
-        if( keyAnswer[i] === letter ) {
+        if( keyAnswer[i] === letter )
           return true;
-        }
       }
       return false;
     }
@@ -37,29 +30,25 @@ $( () => {
   const fillLetter = (letter) => {
     if( !isGameFinish ) {
       for( let i = 0 ; i < selectWord.length ; i++ ){
-        if( keyAnswer[i] == letter ) {
+        if( keyAnswer[i] == letter )
           playerAnswer[i] = letter;
-        }
       }
     }
   };
 
   // Is player win?
   const isWin = () => {
-    if( !isGameFinish ) {
+    if( !isGameFinish )
       return ( keyAnswer.join('') === playerAnswer.join('') );
-    }
   };
 
   // Update the turn section.
   const displayTurn = () => {
     if( !isGameFinish ) {
-      if( turn >= 0 ) {
+      if( turn >= 0 )
         $('#num-turn').html(turn + '');
-      }
-      else {
+      else
         isGameFinish = 1;
-      }
     }
   };
 
@@ -67,9 +56,8 @@ $( () => {
   const displayWord = () => {
     if( !isGameFinish ) {
       let tempWord = '';
-      for( let i = 0 ; i < selectWord.length ; i++ ) {
+      for( let i = 0 ; i < selectWord.length ; i++ )
         tempWord = tempWord + playerAnswer[i] + ' ';
-      }
       $('#player-guess-display').html(tempWord+'');
       if( isWin() ) {
         isGameFinish = true;
@@ -87,12 +75,8 @@ $( () => {
   $(document).on( 'keydown' , () => {
     let letter = String.fromCharCode( event.keyCode ).toLowerCase();
     if( !isGameFinish ) {
-      if( findLetter( letter ) ) {
-        fillLetter( letter );
-      }
-      else {
-        turn--;
-      }
+      if( findLetter( letter ) ) fillLetter( letter );
+      else turn--;
       displayTurn();
       displayWord();
       $('#input-field').val('');
