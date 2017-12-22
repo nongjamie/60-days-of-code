@@ -154,9 +154,7 @@ $( () => {
     r = 0;
     g = 0;
     b = 0;
-    $('#r-value, #g-value, #b-value').val(0);
-    $('#hsl-h-value, #hsl-s-value, #hsl-l-value').val(0);
-    $('#hsv-h-value, #hsv-s-value, #hsv-v-value').val(0);
+    $('input').val(0);
     $('#color-field').css( 'background-color' , `rgb(${r},${g},${b})` );
   } );
 
