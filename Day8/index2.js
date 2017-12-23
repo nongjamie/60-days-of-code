@@ -42,7 +42,7 @@ $( () => {
     })
     .fail(function( response ) {
       console.log("error");
-      console.log( response );
+      alert( response.responseText );
     })
     .always(function() {
       console.log("complete");

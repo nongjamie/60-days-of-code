@@ -12,7 +12,7 @@ $( () => {
       $('#products-field').append(
         `
         <div class="card" style="width: 300px; padding: 10px; margin: 20px; border:2px dotted lightblue;">
-          <img class="card-img-top" src="${array[i].img}" alt="Card image cap">
+          <img class="card-img-top" src="${array[i].img}" alt="Card image cap" style="width: 200px; height: 200px; margin: auto;">
           <div class="card-body">
             <h4 class="card-title">Name : ${array[i].name}</h4>
             <p class="card-text">Volume : ${array[i].volume}</p>
