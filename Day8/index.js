@@ -26,28 +26,33 @@ $( () => {
     }
   };
 
-  $.ajax({
-    url: 'https://ske-minimart.herokuapp.com/api/drinks',
-    type: 'GET',
-  })
-  .done(function( response ) {
-    console.log("success");
-    displayProduct( response );
-  })
-  .fail(function( respose ) {
-    console.log("error");
-    console.log( respose );
-  })
-  .always(function() {
-    console.log("complete");
-  });
+  const ajaxFunction = () => {
+    $.ajax({
+      url: 'https://ske-minimart.herokuapp.com/api/drinks',
+      type: 'GET',
+    })
+    .done(function( response ) {
+      console.log("success");
+      displayProduct( response );
+    })
+    .fail(function( respose ) {
+      console.log("error");
+      console.log( respose );
+    })
+    .always(function() {
+      console.log("complete");
+    });
+  };
+
+  ajaxFunction();
 
   $('#admin-btn').on( 'click' , () => {
     window.location = '../Day8/index2.html';
   } );
 
   $('#refresh-btn').on( 'click' , () => {
-    window.location = '../Day8/index.html';
+    $('#products-field').html(``);
+    ajaxFunction();
   } );
 
 } );
