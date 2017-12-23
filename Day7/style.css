@@ -1,9 +1,6 @@
 * {
   /* border:2px solid lightblue; */
-}
-
-p {
-  font-size: 50px;
+  font-size: 40px;
 }
 
 #welcome-section {
@@ -11,7 +8,7 @@ p {
 }
 
 #welcome-text {
-  font-size: 50px;
+  font-size: 60px;
 }
 
 #player-score-section {
@@ -19,7 +16,7 @@ p {
 }
 
 #score-text {
-  font-size: 40px;
+  font-size: 50px;
 }
 
 #player-score {
