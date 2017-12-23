@@ -16,7 +16,7 @@ $( () => {
   };
 
   const buttonOpen = ( click ) => {
-    $( '#'+click ).attr( 'class' , 'btn btn-link');
+    $( '#'+click ).attr( 'class' , 'btn');
     $( '#'+click ).html( emoji[click] );
   };
 
