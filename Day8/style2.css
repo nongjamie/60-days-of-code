@@ -1,0 +1,21 @@
+#welcome-text {
+  font-size: 60px;
+  margin: 10px;
+}
+
+#add-title-text {
+  font-size: 50px;
+  margin: 10px;
+}
+
+button {
+  margin: 10px;
+}
+
+.input-group {
+  margin: 10px;
+}
+
+#add-item-section {
+  margin: 10px 300px;
+}
