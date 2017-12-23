@@ -3,6 +3,7 @@ let str = 0;
 let def = 0;
 let int = 0;
 let lux = 0;
+let picture = '';
 
 $(() => {
 
@@ -123,6 +124,26 @@ $(() => {
     $('#def-value').html( def );
     $('#int-value').html( int );
     $('#lux-value').html( lux );
+    console.log( $('#my-picture').attr('src') );
   });
+
+  $('#send-butt').on( 'click' , (arguments) => {
+    const data = {
+            pic: $('#my-picture').attr('src'),
+            str: str,
+            def: def,
+            int: int,
+            lux: lux
+    }
+    // console.log( data.pic );
+    // console.log( data.str );
+    // console.log( data.def );
+    // console.log( data.int );
+    // console.log( data.lux );
+    const query = $.param(data);
+    console.log( 'sendbutton is clicked' );
+    // console.log( query );
+    window.location = '../Day4/index.html?' + query;
+  } );
 
 });
