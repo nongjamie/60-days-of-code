@@ -18,11 +18,7 @@ $( () => {
   // Find the letter, Is it in the key answer?
   const findLetter = (letter) => {
     if( !isGameFinish ) {
-      for( let i = 0 ; i < selectWord.length ; i++ ) {
-        if( keyAnswer[i] === letter )
-          return true;
-      }
-      return false;
+      return keyAnswer.includes( letter );
     }
   };
 
